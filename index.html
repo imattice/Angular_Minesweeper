@@ -23,7 +23,9 @@
         <table id='gameboard'>
             <tr ng-repeat='row in minefield.rows'>
                 <td class='spot' ng-repeat='spot in row.spots' ng-click='spot.isCovered=false'>
-                    {{ spot.isCovered }}
+                    <!-- {{ spot.isCovered }} -->
+                    <img ng-if='spot.isCovered' src='css/images/covered.png'>
+                    <img ng-if='!spot.isCovered' src='css/images/empty.png'>
                 </td>
             </tr>
         </table>
