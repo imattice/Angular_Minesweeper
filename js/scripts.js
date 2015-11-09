@@ -20,7 +20,7 @@ var minesweeper = angular.module('minesweeper', []);
             }
             minefield.rows.push(row);
         }
-        placeRandomMine(minefield);
+        placeManyRandomMines(minefield);
         return minefield;
     }
 
@@ -29,7 +29,7 @@ var minesweeper = angular.module('minesweeper', []);
         return minefield.rows[row].spots[column];
     }
 
-//places mines
+//places mine
     function placeRandomMine(minefield) {
         //create mines
         var row = Math.round(Math.random() * 8);
@@ -37,4 +37,11 @@ var minesweeper = angular.module('minesweeper', []);
 
         var spot = getSpot(minefield, row, column);
         spot.content = 'mine';
+    }
+
+//places many mines
+    function placeManyRandomMines(minefield) {
+        for(var i=0; i<10; i++){
+            placeRandomMine(minefield);
+        }
     }
