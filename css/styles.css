@@ -1,0 +1,11 @@
+#gameboard {
+    border: solid 3px black;
+    margin: 30px;
+}
+
+.spot {
+    height: 2em;
+    width: 2em;
+    border: solid 1px black;
+    /*margin: 30px;*/
+}

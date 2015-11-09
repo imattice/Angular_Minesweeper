@@ -1,0 +1,31 @@
+<html ng-app='minesweeper'>
+    <head>
+        <title>Minesweeper</title>
+
+        <!-- JQuery -->
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+        <!-- AngularJS -->
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js'></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+
+        <script src='js/scripts.js'></script>
+        <script src='js/Controllers/MinesweeperController.js'></script>
+
+        <link rel='stylesheet' href='css/styles.css'></link>
+    </head>
+    <body ng-controller='MinesweeperController'>
+        <!-- minefield table -->
+        <table id='gameboard'>
+            <tr ng-repeat='row in minefield.rows'>
+                <td class='spot' ng-repeat='spot in row.spots'>
+                    {{ spot.isCovered }}
+                </td>
+            </tr>
+        </table>
+    </body>
+<html>
