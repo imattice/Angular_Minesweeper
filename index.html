@@ -22,7 +22,7 @@
         <!-- minefield table -->
         <table id='gameboard'>
             <tr ng-repeat='row in minefield.rows'>
-                <td class='spot' ng-repeat='spot in row.spots'>
+                <td class='spot' ng-repeat='spot in row.spots' ng-click='spot.isCovered=false'>
                     {{ spot.isCovered }}
                 </td>
             </tr>
