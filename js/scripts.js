@@ -13,7 +13,7 @@ function createMinefield() {
         //each row has 9 spots that are not revealed
         for(var j=0; j<9; j++){
             var spot = {};
-            spot.isRevealed = false;
+            spot.isCovered = false;
             row.spots.push(spot);
         }
 
