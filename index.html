@@ -25,7 +25,8 @@
                 <td class='spot' ng-repeat='spot in row.spots' ng-click='spot.isCovered=false'>
                     <!-- {{ spot.isCovered }} -->
                     <img ng-if='spot.isCovered' src='css/images/covered.png'>
-                    <img ng-if='!spot.isCovered' src='css/images/empty.png'>
+                    <img ng-if='!spot.isCovered && spot.content=="empty"' src='css/images/empty.png'>
+                    <img ng-if='!spot.isCovered && spot.content=="mine"' src='css/images/mine.png'>
                 </td>
             </tr>
         </table>
