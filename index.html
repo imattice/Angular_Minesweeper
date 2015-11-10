@@ -22,7 +22,7 @@
         <!-- minefield table -->
         <table id='gameboard'>
             <tr ng-repeat='row in minefield.rows'>
-                <td class='spot' ng-repeat='spot in row.spots' ng-click='spot.isCovered=false'>
+                <td class='spot' ng-repeat='spot in row.spots' ng-click='uncoverSpot(spot)'>
                     <!-- {{ spot.isCovered }} -->
                     <img ng-if='spot.isCovered' src='css/images/covered.png'>
                     <img ng-if='!spot.isCovered && spot.content=="empty"' src='css/images/empty.png'>
@@ -39,5 +39,7 @@
                 </td>
             </tr>
         </table>
+
+        <h3 ng-if='isWinMessageVisible'>You won!</h3>
     </body>
 <html>

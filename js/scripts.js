@@ -14,7 +14,7 @@ var minesweeper = angular.module('minesweeper', []);
             //each row has 9 spots that are not revealed
             for(var j=0; j<9; j++){
                 var spot = {};
-                spot.isCovered = false;
+                spot.isCovered = true;
                 spot.content = 'empty';
                 row.spots.push(spot);
             }
@@ -49,16 +49,6 @@ var minesweeper = angular.module('minesweeper', []);
     }
 
 //calculates the amount of mines in the area
-    // function calculateNumber(minefield, row, column) {
-    //     debugger;
-    //     //if this spot contins a mine, then we do not place a number here
-    //     var thisSpot = getSpot(minefield, row, column);
-    //     if(thisSpot.content == 'mine') {
-    //         return;
-    //     }
-    //
-    //     var mineCount = 0;
-
     function calculateNumber(minefield, row, column) {
         var thisSpot = getSpot(minefield, row, column);
         // if this spot contains a mine then we can't place a number here
@@ -175,4 +165,17 @@ var minesweeper = angular.module('minesweeper', []);
                 calculateNumber(minefield, x, y);
             }
         }
+    }
+
+//checks if the player has won
+    function hasWon(minefield){
+        for (var y= 0; y <9; y++){
+            for(var x=0; x<9; x++){
+                var spot=getSpot(minefield, y, x);
+                if(spot.isCovered && spot.content !='mine'){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
