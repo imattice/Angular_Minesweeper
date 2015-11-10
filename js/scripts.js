@@ -45,3 +45,104 @@ var minesweeper = angular.module('minesweeper', []);
             placeRandomMine(minefield);
         }
     }
+
+//calculates the amount of mines in the area
+    function calculateNumber(minefield, row, column) {
+        var thisSpot = getSpot(minefield, row, column);
+
+        //if this spot contins a mine, then we do not place a number here
+        if(thisSpot.content == 'mine') {
+            return;
+        }
+
+        var mineCount = 0;
+
+        // Only check these spots if the selected spot is not in the top row
+        if(row > 0) {
+            //only check these spots if the selected spot is not the first column
+            if(column > 0) {
+                //  ___ ___ ___
+                // |_+_|___|___|
+                // |___|_X_|___|
+                // |___|___|___|
+                var spot = getSpot(minefield, row-1, column-1);
+                if spot.content ==  'mine'{
+                    mineCount++;
+                }
+            }
+            //  ___ ___ ___
+            // |___|_+_|___|
+            // |___|_X_|___|
+            // |___|___|___|
+            var spot = getSpot(minefield, row-1, column);
+            if(spot.content=='mine'){
+                mineCount++;
+            }
+            //only check these spots if the selected spot is not the last column
+            if(column < 8) {
+                //  ___ ___ ___
+                // |___|___|_+_|
+                // |___|_X_|___|
+                // |___|___|___|
+                var spot = getSpot(minefield, row-1, column+1);
+                if(spot.content=='mine'){
+                    mineCount++;
+                }
+            }
+        }
+        //only check these spots if the selected spot is not the first column
+        if(column > 0) {
+            //  ___ ___ ___
+            // |___|___|___|
+            // |_+_|_X_|___|
+            // |___|___|___|
+            var spot = getSpot(minefield, row, column-1);
+            if(spot.content=='mine'){
+                mineCount++;
+            }
+        }
+        //only check these spots if the selected spot is not the last column
+        if(column > 8) {
+        //  ___ ___ ___
+        // |___|___|___|
+        // |___|_X_|_+_|
+        // |___|___|___|
+            var spot = getSpot(minefield, row, column+1);
+            if(spot.content=='mine'){
+                mineCount++;
+            }
+        }
+        // Only check these spots if the selected spot is not in the bottom row
+        if(row > 8) {
+            //only check these spots if the selected spot is not the first column
+            if(column > 0){
+                //  ___ ___ ___
+                // |___|___|___|
+                // |___|_X_|___|
+                // |_+_|___|___|
+                var spot = getSpot(minefield, row+1, column-1);
+                if(spot.content=='mine'){
+                    mineCount++;
+                }
+            }
+            //  ___ ___ ___
+            // |___|___|___|
+            // |___|_X_|___|
+            // |___|_+_|___|
+            var spot = getSpot(minefield, row+1, column);
+            if(spot.content=='mine'){
+                mineCount++;
+            }
+            //  ___ ___ ___
+            // |___|___|___|
+            // |___|_X_|___|
+            // |___|___|_+_|
+            var spot = getSpot(minefield, row+1, column+1);
+            if(spot.content=='mine'){
+                mineCount++;
+            }
+        }
+        if(mineCount > 0) {
+            thisSpot.contenet = mineCount;
+        }
+    }
